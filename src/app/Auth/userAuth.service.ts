@@ -52,6 +52,12 @@ export class UserAuthService{
     )
   }
 
+  onLogoutUser(){
+    this.clearAuthData();
+    this.authenticationStatus.next(false);
+    this.isAuthenticated=false;
+  }
+
   saveAuthData(token:string,expirationDuration:Date,id:string){
     localStorage.setItem('token',token);
     localStorage.setItem('expirationDuration',expirationDuration.toISOString()),

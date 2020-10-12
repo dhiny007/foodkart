@@ -22,7 +22,7 @@
       </li>
     </ul>
     <ul clss="navbar-nav ml-auto" *ngIf="isAuthenticated">
-        <a class='nav-link' href='#' style='color:black'>Logout</a>
+        <a class='nav-link' href='#' style='color:black' (click)='onLogout()'>Logout</a>
     </ul>
   </div>
 </nav>
