@@ -13,5 +13,16 @@
         <a class="nav-link" href="#" routerLink='signup'>Signup</a>
       </li>
     </ul>
+    <ul class="navbar-nav mr-auto" *ngIf='isAuthenticated'>
+      <li class="nav-item active">
+        <a class='nav-link' href='#'>Recipes</a>
+      </li>
+      <li class="nav-item active">
+        <a class='nav-link' href='#'>Shopping List</a>
+      </li>
+    </ul>
+    <ul clss="navbar-nav ml-auto" *ngIf="isAuthenticated">
+        <a class='nav-link' href='#' style='color:black'>Logout</a>
+    </ul>
   </div>
 </nav>

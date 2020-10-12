@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAuthService } from '../Auth/userAuth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +10,13 @@ export class HeaderComponent implements OnInit {
 
   isAuthenticated=false;
 
-  constructor() { }
+  constructor(private  userAuthService:UserAuthService) { }
 
   ngOnInit(): void {
+    //this.isAuthenticated=this.userAuthService.getAuthenticationStatus();
+    this.userAuthService.getAuthStatus().subscribe((response)=>{
+    this.isAuthenticated=response;
+    })
   }
 
 }
