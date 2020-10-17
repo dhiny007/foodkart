@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn:"root"
@@ -12,7 +13,7 @@ export class UserAuthService{
   private isAuthenticated=false;
   token:string;
 
-  constructor(private http:HttpClient){}
+  constructor(private http:HttpClient,private router:Router){}
 
   onSignupUser(email:string,password:string){
     const userData:User={email:email,password:password};
@@ -47,6 +48,7 @@ export class UserAuthService{
         const now=new Date();
         const expirationDuration=new Date(now.getTime() + (expiresIn*1000));
         this.saveAuthData(token,expirationDuration,id);
+        this.router.navigate(['/recipes']);
         }
       }
     )

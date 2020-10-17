@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './Auth/signup/signup.component';
 import { LoginComponent } from './Auth/login/login.component';
 import { HeaderComponent } from './header/header.component';
+import { RecipeListComponent } from './Recipe/recipe-list/recipe-list.component';
+import { RecipeDetailComponent } from './Recipe/recipe-detail/recipe-detail.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { HeaderComponent } from './header/header.component';
     AppComponent,
     SignupComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    RecipeListComponent,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,
