@@ -58,6 +58,7 @@ export class UserAuthService{
     this.clearAuthData();
     this.authenticationStatus.next(false);
     this.isAuthenticated=false;
+    this.router.navigate(['/login']);
   }
 
   saveAuthData(token:string,expirationDuration:Date,id:string){

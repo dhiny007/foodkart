@@ -1,10 +1,29 @@
 <div class='container'>
-  <div class="row">
-    <div class="col-md-5 col-xs-5 col-lg-5 col-xl-5 align">
-      recipe list
-    </div>
-    <div class="col-md-6 col-xs-6 col-lg-6 col-xl-6 right-align">
-      <app-recipe-detail></app-recipe-detail>
+  <div class='row'>
+    <div class="col-md-12">
+      <button type='button' class='btn btn-success' (click)='onNavigate()'>New Recipe</button>
     </div>
   </div>
+    <div class="row">
+      <div class="col-md-5 col-xs-5 col-lg-5 col-xl-5 align">
+        <ul class='list-group' *ngIf='recipes'>
+          <li class='list-group-item' *ngFor='let recipe of recipes'>
+            <div class='float-left'>
+              <h3>{{recipe.heading}}</h3>
+              <p>{{recipe.content}}</p>
+            </div>
+            <div class='float-right'>
+              <p>{{recipe.imageURL}}</p>
+            </div>
+          </li>
+          <li class='list-group-item'>
+            Some other text
+          </li>
+        </ul>
+        <p *ngIf='!recipes'>Please create a new recipe!</p>
+      </div>
+      <div class="col-md-6 col-xs-6 col-lg-6 col-xl-6 right-align">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
 </div>
