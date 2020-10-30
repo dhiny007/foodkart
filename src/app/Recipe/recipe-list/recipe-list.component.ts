@@ -25,12 +25,10 @@ export class RecipeListComponent implements OnInit,OnDestroy {
     console.log('service call');
     this.recipeService.fetchRecipes();
     this.recipeSub=this.recipeService.getSubjectDetails().subscribe(response=>{
-      console.log(response);
-      for(let res of response){
+      //console.log(response);
         this.recipe.push(response);
-      }
       this.recipes=response;
-      console.log(this.recipe);
+     // console.log(this.recipe);
       //console.log(this.id);
       // if(this.recipes[0]){
       //   console.log(this.recipes[0]['_id']);
@@ -51,12 +49,12 @@ export class RecipeListComponent implements OnInit,OnDestroy {
   getRecipeId(id){
     //console.log(id);
     this.id=id;
-    console.log(this.id);
+    //console.log(this.id);
     this.router.navigate([id],{relativeTo:this.route});
   }
 
   onDelete(){
-
+    this.recipeService.deleteRecipe(this.id);
   }
 
   ngOnDestroy(){

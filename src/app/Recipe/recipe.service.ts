@@ -34,6 +34,14 @@ export class RecipeService {
     })
   }
 
+  deleteRecipe(id:number){
+    this.http.delete('http://localhost:3000/recipes/'+id).subscribe(response =>{
+      console.log(response);
+      this.router.navigate(['/recipes']);
+      this.fetchRecipes();
+    })
+  }
+
   fetchRecipes(){
     this.http.get<{message:string,recipe:Recipe[]}>('http://localhost:3000/recipes/new').subscribe(response=>{
       console.log(response);

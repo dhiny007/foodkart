@@ -61,4 +61,15 @@ router.get('/recipes/:id',(req,res,next)=>{
   })
 })
 
+router.delete('/recipes/:id',(req,res,next)=>{
+  Recipe.deleteOne({_id:req.params.id}).then(response=>{
+    //console.log(response);
+    if(response.deletedCount>0){
+      res.status(200).json({
+        messsage:'Recipe Deleted Successfully'
+      })
+    }
+  })
+})
+
 module.exports=router;
