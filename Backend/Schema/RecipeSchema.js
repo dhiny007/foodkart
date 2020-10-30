@@ -6,4 +6,4 @@ const recipeSchema=mongoose.Schema({
   imagePath:{type:String,required:true}
 });
 
-module.exports=recipeSchema;
+module.exports=mongoose.model('Recipe',recipeSchema);

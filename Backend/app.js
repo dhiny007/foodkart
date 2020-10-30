@@ -4,6 +4,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
 const userRoutes=require('./Routes/userRoutes');
+const recipeRoutes=require('./Routes/recipeRoutes');
 
 const app=express();
 
@@ -26,5 +27,6 @@ app.use((req,res,next) => {
 });
 
 app.use(userRoutes);
+app.use(recipeRoutes);
 
 app.listen(3000);

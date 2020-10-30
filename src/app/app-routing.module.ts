@@ -12,7 +12,8 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'recipes',component:RecipeListComponent,children:[
     // {path:':recipeId',component:RecipeDetailComponent},
-    {path:'new',component:RecipeNewComponent}
+    {path:'new',component:RecipeNewComponent},
+    {path:':id',component:RecipeListComponent}
   ]},
 
 ];
