@@ -25,9 +25,9 @@ export class RecipeListComponent implements OnInit,OnDestroy {
     console.log('service call');
     this.recipeService.fetchRecipes();
     this.recipeSub=this.recipeService.getSubjectDetails().subscribe(response=>{
-      // console.log(response);
+      console.log(response);
       for(let res of response){
-        this.recipe.push(res);
+        this.recipe.push(response);
       }
       this.recipes=response;
       console.log(this.recipe);

@@ -27,9 +27,10 @@ export class RecipeService {
     this.http.post<{message:string,recipe:Recipe[]}>('http://localhost:3000/recipes/new',formData).subscribe(response=>{
       console.log(response);
       this.router.navigate(['/recipes']);
-      this.recipeSub.next(response.recipe);
-      console.log(this.recipeSub);
+      // this.recipeSub.next(response.recipe);
+      // console.log(this.recipeSub);
       this.fetchRecipes();
+      //this.router.navigate(['../']);
     })
   }
 
