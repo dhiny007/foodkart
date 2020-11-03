@@ -13,7 +13,7 @@ const routes: Routes = [
   {path:'recipes',component:RecipeListComponent,children:[
     // {path:':recipeId',component:RecipeDetailComponent},
     {path:'new',component:RecipeNewComponent},
-    {path:':id',component:RecipeListComponent}
+    {path:':id',component:RecipeDetailComponent}
   ]},
 
 ];

@@ -18,13 +18,13 @@ export class RecipeService {
     return this.recipeSub.asObservable();
   }
 
-  createRecipe(heading:string,description:string,imageURL:string){
-    console.log(heading,description,imageURL);
+  createRecipe(heading:string,description:string,image:File){
+    console.log(heading,description,image);
     const formData=new FormData();
     formData.append('heading',heading);
     formData.append('description',description);
-    formData.append('image',imageURL,heading);
-    this.http.post<{message:string,recipe:Recipe[]}>('http://localhost:3000/recipes/new',formData).subscribe(response=>{
+    formData.append('image',image,heading);
+    this.http.post<{message:string,recipe:Recipe}>('http://localhost:3000/recipes/new',formData).subscribe(response=>{
       console.log(response);
       this.router.navigate(['/recipes']);
       // this.recipeSub.next(response.recipe);
@@ -43,13 +43,14 @@ export class RecipeService {
   }
 
   fetchRecipes(){
-    this.http.get<{message:string,recipe:Recipe[]}>('http://localhost:3000/recipes/new').subscribe(response=>{
+    this.http.get<{message:string,recipe:any}>('http://localhost:3000/recipes/new').subscribe(response=>{
       console.log(response);
       this.recipeSub.next(response.recipe);
     })
   }
 
-  getRecipeId(id:number){
+  getRecipeDetails(id:string){
+    console.log(id);
     this.http.get('http://localhost:3000/recipes/new/' +id).subscribe(response=>{
       console.log(response);
     })

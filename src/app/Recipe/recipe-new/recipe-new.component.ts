@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class RecipeNewComponent implements OnInit {
   form:FormGroup;
   imagePreview:string;
 
-  constructor(private recipeService:RecipeService) { }
+  constructor(private recipeService:RecipeService,private router:Router) { }
 
   ngOnInit(): void {
     this.form=new FormGroup({
@@ -33,6 +34,10 @@ export class RecipeNewComponent implements OnInit {
     reader.readAsDataURL(file);
     console.log(file);
     console.log(this.form);
+  }
+
+  onCancel(){
+    this.router.navigate(['/recipes']);
   }
 
   onSubmit(){

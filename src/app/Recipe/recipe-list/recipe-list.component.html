@@ -10,17 +10,16 @@
     <div class="row">
       <div class="col-md-5 col-xs-5 col-lg-5 col-xl-5 align">
         <ul class='list-group' *ngIf='recipes'>
-          <li class='list-group-item' *ngFor='let recipe of recipes;let i=index' (click)='getRecipeId(recipe["_id"])'>
+          <li class='list-group-item' *ngFor='let recipe of recipes;let i=index'
+          [ngStyle]="{'background-color':recipe['_id']===ind?'blue':'white'}"
+          (click)='getRecipe(recipe["_id"]);selectedElement(recipe["_id"])'>
               <div class='float-left'>
                 <h6>{{recipe.heading}}</h6>
                 <p>{{recipe.content}}</p>
               </div>
-              <div class='float-right'>
-                <p>{{recipe.imageURL}}</p>
-              </div>
-          </li>
-          <li class='list-group-item'>
-            Some other text
+              <span class='float-right image-content'>
+                <img [src]="recipe.imagePath" [alt]='recipe.heading' class="img-responsive" style="max-height: 50px;">
+              </span>
           </li>
         </ul>
         <p *ngIf='!recipes'>Please create a new recipe!</p>

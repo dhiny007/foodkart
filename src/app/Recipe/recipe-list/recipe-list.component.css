@@ -5,3 +5,7 @@
 .right-align{
   margin:1px;
 }
+
+.image-content img{
+  width:60%;
+}

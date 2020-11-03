@@ -17,6 +17,8 @@ export class RecipeListComponent implements OnInit,OnDestroy {
   recipeSub:Subscription;
   id:number;
   recipeId:string;
+  selected:boolean;
+  ind:number;
 
 
   constructor(private router:Router,private route:ActivatedRoute,private recipeService:RecipeService) { }
@@ -33,24 +35,40 @@ export class RecipeListComponent implements OnInit,OnDestroy {
       // if(this.recipes[0]){
       //   console.log(this.recipes[0]['_id']);
       // }
+      console.log(this.recipes);
 
     })
-    this.route.params.subscribe((params:Params)=>{
-      this.id=+params['id'];
-     // console.log(this.id);
-      //console.log(this.recipeId);
-    })
+    // this.route.params.subscribe((params:Params)=>{
+    //   this.id=+params['id'];
+    //  // console.log(this.id);
+    //   //console.log(this.recipeId);
+    // })
+  }
+
+  selectedElement(index){
+    console.log(index);
+    // for(let recipe of this.recipes){
+    //   if(recipe['_id']==index){
+    //     this.ind=index;
+    //   }
+    //   else{
+    //     this.ind=null;
+    //   }
+    // }
+    this.ind=index;
   }
 
   onNavigate(){
     this.router.navigate(['new'],{relativeTo:this.route});
   }
 
-  getRecipeId(id){
+  getRecipe(id){
     //console.log(id);
     this.id=id;
     //console.log(this.id);
     this.router.navigate([id],{relativeTo:this.route});
+    this.recipeService.getRecipeDetails(""+this.id);
+
   }
 
   onDelete(){
