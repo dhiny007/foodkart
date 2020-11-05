@@ -15,7 +15,7 @@ export class RecipeListComponent implements OnInit,OnDestroy {
   recipes:Recipe[];
   recipe=[];
   recipeSub:Subscription;
-  id:number;
+  id:string;
   recipeId:string;
   selected:boolean;
   ind:number;
@@ -26,6 +26,7 @@ export class RecipeListComponent implements OnInit,OnDestroy {
   ngOnInit(){
     console.log('service call');
     this.recipeService.fetchRecipes();
+    // this.recipeService.getRecipeDetails(this.id)
     this.recipeSub=this.recipeService.getSubjectDetails().subscribe(response=>{
       //console.log(response);
         this.recipe.push(response);
@@ -38,23 +39,10 @@ export class RecipeListComponent implements OnInit,OnDestroy {
       console.log(this.recipes);
 
     })
-    // this.route.params.subscribe((params:Params)=>{
-    //   this.id=+params['id'];
-    //  // console.log(this.id);
-    //   //console.log(this.recipeId);
-    // })
   }
 
   selectedElement(index){
     console.log(index);
-    // for(let recipe of this.recipes){
-    //   if(recipe['_id']==index){
-    //     this.ind=index;
-    //   }
-    //   else{
-    //     this.ind=null;
-    //   }
-    // }
     this.ind=index;
   }
 

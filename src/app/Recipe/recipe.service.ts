@@ -10,6 +10,7 @@ import { Recipe } from './recipe.model';
 export class RecipeService {
 
   recipeSub=new BehaviorSubject<Recipe[]>([]);
+  singleRecipeSub=new BehaviorSubject<Recipe>(null);
 
   constructor(private http:HttpClient,private router:Router) { }
 
@@ -34,7 +35,7 @@ export class RecipeService {
     })
   }
 
-  deleteRecipe(id:number){
+  deleteRecipe(id:string){
     this.http.delete('http://localhost:3000/recipes/'+id).subscribe(response =>{
       console.log(response);
       this.router.navigate(['/recipes']);
@@ -51,8 +52,11 @@ export class RecipeService {
 
   getRecipeDetails(id:string){
     console.log(id);
-    this.http.get('http://localhost:3000/recipes/new/' +id).subscribe(response=>{
-      console.log(response);
-    })
+    this.http.get<{recipe:Recipe}>('http://localhost:3000/recipes/new/' +id).subscribe(response=>{
+      console.log(response.recipe);
+      //this.recipe=response.recipe;
+      this.singleRecipeSub.next(response.recipe);
+      console.log(this.singleRecipeSub);
+    });
   }
 }

@@ -1,5 +1,4 @@
 export class Recipe{
-
   private heading:string;
   private content:string;
   private imagePath:string;
