@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser= require('body-parser');
 const userRoutes=require('./Routes/userRoutes');
 const recipeRoutes=require('./Routes/recipeRoutes');
+const ingRoutes=require('./Routes/ingredientRoutes');
 
 const app=express();
 
@@ -29,5 +30,6 @@ app.use((req,res,next) => {
 
 app.use(userRoutes);
 app.use(recipeRoutes);
+app.use(ingRoutes);
 
 app.listen(3000);
