@@ -24,4 +24,13 @@ router.get('/shopping-list',(req,res,next)=>{
   })
 })
 
+router.delete('/shopping-list/:id',(req,res,next)=>{
+  console.log(req.params.id);
+  Ingredient.deleteOne({_id:req.params.id}).then(response=>{
+    res.status(200).json({
+      message:'Ingredient deleted successfully'
+    })
+  })
+})
+
 module.exports=router;

@@ -28,6 +28,7 @@ export class ShoppingEditComponent implements OnInit,OnChanges {
 
   onDeleteIngredient(){
     console.log(this.id);
+    this.shoppingListService.deleteIngredient(this.id)
   }
 
   ngOnChanges(changes:SimpleChanges){

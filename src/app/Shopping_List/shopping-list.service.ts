@@ -29,4 +29,12 @@ export class ShoppingListService {
       this.ingSub.next(response.ingredients);
     })
   }
+
+  deleteIngredient(id:string){
+    console.log(id);
+    this.http.delete('http://localhost:3000/shopping-list/'+id).subscribe(response=>{
+      console.log(response);
+    });
+    this.fetchIngredients();
+  }
 }
