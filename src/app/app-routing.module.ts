@@ -5,6 +5,7 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { RecipeDetailComponent } from './Recipe/recipe-detail/recipe-detail.component';
 import { RecipeListComponent } from './Recipe/recipe-list/recipe-list.component';
 import { RecipeNewComponent } from './Recipe/recipe-new/recipe-new.component';
+import { ShoppingEditComponent } from './Shopping_List/shopping-edit/shopping-edit.component';
 import { ShoppingListComponent } from './Shopping_List/shopping-list/shopping-list.component';
 
 const routes: Routes = [
@@ -16,7 +17,9 @@ const routes: Routes = [
     {path:'new',component:RecipeNewComponent},
     {path:':id',component:RecipeDetailComponent}
   ]},
-  {path:'shopping-list',component:ShoppingListComponent}
+  {path:'shopping-list',component:ShoppingListComponent,children:[
+    {path:':id',component:ShoppingEditComponent}
+  ]}
 ];
 
 @NgModule({

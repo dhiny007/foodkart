@@ -1,15 +1,18 @@
 <div class='container-fluid'>
   <div class="row">
     <div class="offset-md-1 col-md-10">
-      <app-shopping-edit></app-shopping-edit>
+      <app-shopping-edit [id]="index"></app-shopping-edit>
       <hr>
     </div>
   </div>
   <div class='row'>
     <div class="offset-md-1 col-md-8">
       <ul class='list-group'>
-        <li class='list-group-item'>
-          Ingredient Name (Ingredient Amount)
+        <li class='list-group-item' *ngFor='let ingredient of ingredients;let i=index'
+        [ngStyle]="{'background-color':ingredient['_id']===index?'aqua':'white'}"
+        (click)='getIngredient(ingredient["_id"]);selectedElement(ingredient["_id"])'
+        >
+          {{ingredient.ingName}} ({{ingredient.ingAmount}})
         </li>
       </ul>
     </div>
