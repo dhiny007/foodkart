@@ -33,4 +33,29 @@ router.delete('/shopping-list/:id',(req,res,next)=>{
   })
 })
 
+router.get('/shopping-list/:id',(req,res,next)=>{
+  Ingredient.findById({_id:req.params.id}).then(response=>{
+    res.json({
+      message:'Recipe fetched successfully',
+      ingredient:response
+    })
+  })
+})
+
+router.put('/shopping-list/:id',(req,res,next)=>{
+  //console.log(req.params);
+  const ingredient=new Ingredient({
+    _id:req.params.id,
+    ingName:req.body.ingName,
+    ingAmount:req.body.ingAmount
+  });
+  //console.log(ingredient);
+  Ingredient.updateOne({_id:req.params.id},ingredient).then(response=>{
+    res.json({
+      message:'Ingredient updated successfully',
+      updatedIngredient:response
+    })
+  })
+})
+
 module.exports=router;

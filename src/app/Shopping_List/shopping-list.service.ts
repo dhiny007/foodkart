@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ShoppingListService {
   ingSub=new BehaviorSubject<Ingredient[]>([]);
+  singleIng=new BehaviorSubject<Ingredient>(null);
 
   constructor(private http:HttpClient) { }
 
@@ -20,6 +21,7 @@ export class ShoppingListService {
     console.log(ingredient);
     this.http.post('http://localhost:3000/shopping-list',ingredient).subscribe(response=>{
       console.log(response);
+      this.fetchIngredients();
     })
   }
 
@@ -30,11 +32,26 @@ export class ShoppingListService {
     })
   }
 
+  getIngredient(id:string){
+    this.http.get<{message:string,ingredient:Ingredient}>('http://localhost:3000/shopping-list/'+id).subscribe(response=>{
+      console.log(response);
+      this.singleIng.next(response.ingredient);
+    })
+  }
+
   deleteIngredient(id:string){
     console.log(id);
     this.http.delete('http://localhost:3000/shopping-list/'+id).subscribe(response=>{
       console.log(response);
+      this.fetchIngredients();
     });
-    this.fetchIngredients();
+  }
+
+  updateIngredient(id:string,name:string,amount:number){
+    const ingredient:Ingredient={ingName:name,ingAmount:amount};
+    this.http.put('http://localhost:3000/shopping-list/'+id,ingredient).subscribe(response=>{
+      console.log(response);
+      this.fetchIngredients();
+    })
   }
 }
