@@ -2,7 +2,7 @@
 
 ## **Instructions**
 
-* Open the command prompt by running the command **cmd**, and then navigate to the folder named **Foodkart** through command prompt. Once done, run the command **ng serve** to start the frontend.
+* Open the command prompt by running the command **cmd**, and then navigate to the folder named **Foodkart** through command prompt. Run the command **npm install** to install all the necessary packages. Once this command is done,you will see that a folder named node_modules was created in this path. After this,run the command **ng serve** to start the frontend.
 * Also start the backend server in the same place by using the command **npm run startServer**.
 * Connect the backend to the database through command prompt by using the command **"<THE_PATH_OF_MONGOD.EXE>" --dbpath="<THE_DATABASE_PATH>"**. An example of how the command will look like: "C:\Program Files\MongoDB\Server\4.4\bin\mongod.exe" --dbpath="c:\Mongo Database Details\data\fullstackPractice".
 * The backend connection to the database may fail at times. In such cases, just restart the backend server.
